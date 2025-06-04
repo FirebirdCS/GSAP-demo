@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <h1 class="text">
+    El código es poesía, pero también puede ser magia visual con GSAP
+  </h1>
 </Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  gsap.registerPlugin(SplitText);
+
+  const splitText = new SplitText("h1", {
+    type: "words, chars, lines",
+  });
+
+  gsap.from(splitText.words, {
+    duration: 1,
+    y: 10,
+    stagger: 0.1,
+    autoAlpha: 0,
+    filter: "blur(10px)",
+  });
+</script>
