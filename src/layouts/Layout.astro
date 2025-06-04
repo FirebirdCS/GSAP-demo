@@ -23,18 +23,67 @@
     height: 100%;
   }
 
-  .text {
-    text-wrap: balance;
-    text-align: center;
+  body {
+    height: 5000px;
+    width: 75vw;
   }
-  /* h1 {
+
+  .text {
     text-wrap: balance;
     text-align: center;
     position: fixed;
     left: 50%;
-    top: 45%;
-    transform: trasnlate(-50%, -50%);
-    font-size: 15vw;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    font-size: 14vw;
     width: 100%;
-  } */
+    z-index: 1;
+  }
+
+  .text-after {
+    text-wrap: balance;
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    font-size: 5vw;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+  }
+
+  canvas {
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 1068/600;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .spatial-video {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+  }
+
+  .prop-list {
+    opacity: 0;
+    list-style: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 2;
+    font-size: 5vw;
+  }
 </style>

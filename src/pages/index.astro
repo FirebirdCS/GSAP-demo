@@ -1,28 +1,63 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import VideoApple from "../components/VideoApple.astro";
+import AirPodsTrigger from "../components/AirPodsTrigger.astro";
 ---
 
 <Layout>
-  <h1 class="text">
-    El código es poesía, pero también puede ser magia visual con GSAP
-  </h1>
+  <h1 class="text">Airpods Pro</h1>
+  <AirPodsTrigger />
+  <h1 class="text-after">Una experiencia resonante.</h1>
+  <div style="height: 250vh;"></div>
+  <VideoApple />
 </Layout>
 
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { SplitText } from "gsap/SplitText";
-  gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  const splitText = new SplitText("h1", {
-    type: "words, chars, lines",
-  });
-
-  gsap.from(splitText.words, {
-    duration: 1,
-    y: 10,
-    stagger: 0.1,
+  gsap.to(".text", {
+    scale: 1.4,
     autoAlpha: 0,
-    filter: "blur(10px)",
+    scrollTrigger: {
+      start: "center center",
+      end: "80% center",
+      scrub: 0.5,
+    },
   });
+
+  gsap.to(".text-after", {
+    opacity: 1,
+    autoAlpha: 1,
+    visibility: "visible",
+    ease: "power2.inOut",
+    scrollTrigger: {
+      start: "86% center",
+      end: "10% center",
+      scrub: 0.5,
+    },
+  });
+
+  const tl = gsap.timeline();
+
+  tl.from("#hero", {
+    opacity: 0,
+    scale: 0.8,
+    y: 50,
+    duration: 1,
+    ease: "power2.out",
+  });
+
+  tl.from(
+    ".text",
+    {
+      opacity: 0,
+      y: 20,
+      duration: 0.7,
+      ease: "power2.out",
+    },
+    "-=0.5"
+  );
 </script>

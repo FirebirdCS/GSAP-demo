@@ -1,0 +1,35 @@
+<video id="spatial-video" class="spatial-video" playsinline muted loop>
+  <source
+    src="https://www.apple.com/105/media/us/airpods-pro/2022/d2deeb8e-83eb-48ea-9721-f567cf0fffa8/anim/spatial-audio/medium.mp4"
+    type="video/mp4"
+  />
+</video>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  gsap.registerPlugin(SplitText, ScrollTrigger);
+
+  const video = document.getElementById("spatial-video") as HTMLVideoElement;
+
+  gsap.to(".spatial-video", {
+    opacity: 1,
+    visibility: "visible",
+    ease: "power2.inOut",
+    scrollTrigger: {
+      start: "90% center",
+      end: "20% center",
+      scrub: 0.5,
+      onEnter: () => {
+        video.play();
+      },
+      onLeaveBack: () => {
+        video.pause();
+      },
+      onEnterBack: () => {
+        video.play();
+      },
+    },
+  });
+</script>
